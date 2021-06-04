@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <h3 class="card-title pt-1">Акпарат</h3>
                     <div class="card-tools">
-                        {!!   (!\App\Models\UserData::count()) ? '<a href="' . url('/edit/create'). '" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Создать</a>' : '' !!}
+                        {!!   (!\App\Models\UserData::where('user_id', auth()->id())->count()) ? '<a href="' . url('/edit/create'). '" class="btn btn-success btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Создать</a>' : '' !!}
                     </div>
                 </div>
 

@@ -20,14 +20,16 @@
             <div class="main_content">
                 <div class="main_title_container d-flex flex-column align-items-start justify-content-end">
                     <div class="main_subtitle">Портфолио</div>
-                    <div class="main_title">{{ auth()->user()->name }} {{ auth()->user()->data->surname }}</div>
+                    <div class="main_title">{{ auth()->user()->name }} {{ isset(auth()->user()->data) ? auth()->user()->data->surname : '' }}</div>
                 </div>
                 <div class="main_content_scroll mCustomScrollbar" data-mcs-theme="minimal-dark">
                     <div class="about_content">
+                        @if(isset(auth()->user()->data))
                         <div class="about_title">Мінездеме</div>
                         <div class="about_text">
                             {!! auth()->user()->data->characteristic !!}
                         </div>
+                        @endif
 
                         <!-- Loaders -->
 

@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/testimonials', [ IndexPage::class, 'testimonials' ])->name('testimonials');
     Route::get('/gopdf', [UserController::class, 'export']);
 
+    Route::post('/sendmail', [IndexPage::class, 'sendmail']);
     Route::resource('edit', UserController::class);
 
 });

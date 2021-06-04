@@ -1,3 +1,17 @@
+@php
+if (isset(auth()->user()->data))
+{
+    $surname = auth()->user()->data->surname;
+    $city = auth()->user()->data->city;
+    $bday = auth()->user()->data->bday;
+    $phone = auth()->user()->data->phone;
+} else {
+    $surname = '-';
+    $city = 'Astana';
+    $bday = 'XXXX.XX.XX';
+    $phone = '+7 (7XX) XXX-XX-XX';
+}
+@endphp
 <div class="general_info d-flex flex-xl-column flex-md-row flex-column">
     <div>
         <div class="general_info_image">
@@ -14,15 +28,15 @@
             <ul class="general_info_list">
                 <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_1.png') }}" alt=""></div>
-                    <div class="general_info_text">Аты-жөні: <span>{{ auth()->user()->name.' '.auth()->user()->data->surname }}</span></div>
+                    <div class="general_info_text">Аты-жөні: <span>{{ auth()->user()->name.' '.$surname }}</span></div>
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"></div>
-                    <div class="general_info_text">Мекен-жайы: <span>{{ auth()->user()->data->city }}</span></div>
+                    <div class="general_info_text">Мекен-жайы: <span>{{ $city }}</span></div>
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_2.png') }}" alt=""></div>
-                    <div class="general_info_text">Туған күні: <span>{{ auth()->user()->data->bday }}</span></div>
+                    <div class="general_info_text">Туған күні: <span>{{ $bday }}</span></div>
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_3.png') }}" alt=""></div>
@@ -30,12 +44,14 @@
                 </li>
                 <li class="d-flex flex-row align-items-center justify-content-start">
                     <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_4.png') }}" alt=""></div>
-                    <div class="general_info_text">{{ auth()->user()->data->phone }}</div>
+                    <div class="general_info_text">{{ $phone }}</div>
                 </li>
-                <li class="d-flex flex-row align-items-center justify-content-start">
-                    <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_5.png') }}" alt=""></div>
-                    <div class="general_info_text"><a href="{{ auth()->user()->data->website }}" target="_blank">{{ auth()->user()->data->website }}</a></div>
-                </li>
+                @if(isset(auth()->user()->data))
+                    <li class="d-flex flex-row align-items-center justify-content-start">
+                        <div class="general_info_icon d-flex flex-column align-items-start justify-content-center"><img src="{{ url('i/icon_5.png') }}" alt=""></div>
+                        <div class="general_info_text"><a href="{{ auth()->user()->data->website }}" target="_blank">{{ auth()->user()->data->website }}</a></div>
+                    </li>
+                @endif
             </ul>
 
             <!-- Social -->

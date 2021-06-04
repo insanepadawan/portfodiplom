@@ -29,13 +29,17 @@
                     <div class="portfolio_grid grid clearfix">
 
 
-                        <div class="grid-item portfolio_item p_design">
-                            <img src="{{ url('/i/photos/'.auth()->user()->data->portfolio_image) }}" alt="">
-                            <div class="portfolio_item_content d-flex flex-column align-items-center justify-content-center">
-                                <div class="portfolio_item_title">{{ auth()->user()->data->portfolio }}</div>
-                                <div class="portfolio_item_link"><a href="{{ auth()->user()->data->portfolio_link }}">See More</a></div>
+                        @if(isset(auth()->user()->data))
+                            <div class="grid-item portfolio_item p_design">
+                                <img src="{{ url('/i/photos/'.auth()->user()->data->portfolio_image) }}" alt="">
+                                <div class="portfolio_item_content d-flex flex-column align-items-center justify-content-center">
+                                    <div class="portfolio_item_title">{{ auth()->user()->data->portfolio }}</div>
+                                    <div class="portfolio_item_link"><a href="{{ auth()->user()->data->portfolio_link }}">See More</a></div>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div style="color: black; font-size: 2.4rem">Мұнда әлі ештеңе жоқ...</div>
+                        @endif
                     <!-- Portfolio Item -->
 
 

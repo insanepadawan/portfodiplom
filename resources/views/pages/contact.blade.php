@@ -38,7 +38,8 @@
                                         <p>Маған сұрақ қойыңыз</p>
                                     </div>
                                     <div class="contact_form_container">
-                                        <form action="insert.php" method="POST" id="contact_form" class="contact_form clearfix">
+                                        <form action="{{ url('/sendmail') }}" method="POST" id="contact_form" class="contact_form clearfix">
+                                            @csrf
                                             <div><input type="text" name="name" class="contact_input" placeholder="Аты" required="required"></div>
                                             <div><input type="email" name="email" class="contact_input" placeholder="E-mail" required="required"></div>
                                             <input type="text" name="text" class="contact_input" placeholder="Тақырыбы" required="required">
